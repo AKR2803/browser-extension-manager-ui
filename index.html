@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Noto+Sans:wght@500&display=swap"
+    rel="stylesheet">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="styles/styles.css">
+
+  <title>Frontend Mentor | Browser extensions manager UI</title>
+</head>
+
+<body>
+  <div class="logo-container">
+    <div class="logo-icon">
+      <img src="./assets/images/logo.svg" alt="logo-icon">
+    </div>
+    <button type="button" id="theme-toggle">
+      <img id="sun-icon" src="./assets/images/icon-sun.svg" alt="sun-icon">
+      <img id="moon-icon" src="./assets/images/icon-moon.svg" alt="moon-icon" class="hidden">
+    </button>
+  </div>
+
+  <div class="header-container">
+
+    <h2>Extensions List</h2>
+
+    <div class="button-container">
+      <button type="button" id="all-btn" class="filter-button active">All</button>
+      <button type="button" id="active-btn" class="filter-button">Active</button>
+      <button type="button" id="inactive-btn" class="filter-button">Inactive</button>
+    </div>
+
+  </div>
+
+  <div class="extension-container">
+    <!-- Populate Extension Cards Using JavaScript -->
+  </div>
+
+  <footer class="attribution" style="text-align: center; margin-top: 1rem;font-size: 0.75em;">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+    Coded by <a href="https://www.frontendmentor.io/profile/AKR-2803">Aaryaveer Rajput</a>.
+  </footer>
+
+  <script src="./scripts/script.js"></script>
+
+</body>
+
+</html>

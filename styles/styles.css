@@ -1,0 +1,295 @@
+/* default light theme */
+:root{
+    --background: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
+    --text-color: #000;
+    --primary-color:#005fc5;
+    --secondary-color:#fff;
+    --background-red: hsl(3, 77%, 44%);
+    --button-hover-text-color: #fff; 
+    --neutral-900: hsl(227, 75%, 14%);
+    --neutral-800: hsl(226, 25%, 17%);
+    --neutral-700: hsl(225, 23%, 24%);
+    --neutral-600: hsl(226, 11%, 37%);
+    --neutral-300: hsl(0, 0%, 78%);
+    --neutral-200: hsl(217, 61%, 90%);
+    --neutral-100: hsl(0, 0%, 93%);
+    --neutral-0: hsl(200, 60%, 99%);
+    --icon-bg-color: hsl(0, 0%, 87%);
+}
+
+/* override if system prefers dark */
+[data-theme="dark"]{
+    --background: linear-gradient(180deg, #040918 0%, #091540 100%);
+    --text-color: #fff;
+    --primary-color:#94c8ff;
+    --secondary-color:#000;
+    --background-red: hsl(3, 71%, 56%);
+    --button-hover-text-color: #000;
+    --icon-bg-color: hsl(225, 23%, 24%);
+}
+
+/* IMPORTANT! so that buttons swap active and inactive */
+[data-theme="dark"] .filter-button.active{
+    background-color: var(--background-red);
+}
+
+/* set box-sizing */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* hidden class */
+.hidden{
+    display: none;
+    pointer-events: none; /* prevent interaction with hidden elements */  
+}
+
+#sun-icon,
+#moon-icon {
+  transition: opacity 0.3s ease;
+}
+
+[data-theme='dark'] #sun-icon,
+[data-theme='light'] #moon-icon{
+    display: inline;
+    opacity: 1;
+}
+
+[data-theme='dark'] #moon-icon, 
+[data-theme='light'] #sun-icon{
+    display: none;
+    opacity: 0;
+}
+
+/* Remember: CSS does not transition gradients.
+In CSS, you can't transition a background gradient. It jumps from one gradient to the other immediately, with no smooth transition between the two. Of course there's some workaround to make it work, but we have not done it here.
+*/
+body{
+    font-family: 'Noto Sans', system-ui, sans-serif;
+    background: var(--background) no-repeat;
+    background-attachment: fixed; /* Ensures it covers the whole viewport even when scrolling */
+    background-size: cover; /* Ensures it covers the entire viewport */
+    color: var(--text-color);
+    transition: color 0.2s;
+    padding: 1rem 10rem;
+    height: 100%;
+}
+
+/* apply font-family to inputs and buttons */
+input, button{
+    font-family: 'Noto Sans', system-ui, sans-serif;
+}
+
+/* logo strip */
+.logo-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem;
+    border: none;
+  
+    border-radius: 1em;
+    box-shadow: 0 0 4px rgb(208, 208, 208);
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+    backdrop-filter: blur(10px);            /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(10px);    /* For Safari */
+}
+
+.logo-icon{
+    display: flex;
+}
+
+.logo-icon img{
+    height: 2em;
+}
+
+/* toggle theme  */
+#theme-toggle{
+    display: flex;
+    place-items: center;
+    padding: 0.75em;
+    color: var(--secondary-color);
+    background-color: var(--icon-bg-color);
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+#theme-toggle img{
+    height: 1.2em;
+}
+
+.filter-button.active{
+    background-color: var(--background-red);
+    color: var(--button-hover-text-color);
+}
+
+/* header with filter buttons */
+.header-container{
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+
+/* button container with blur effect */
+.button-container button{
+    border-radius: 1.5em;
+    border: none;
+    box-shadow: 0 0 1px var(--neutral-600);
+    padding: 0.5em 1em;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+    backdrop-filter: blur(10px);            /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(10px);    /* For Safari */
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-container button:hover{
+    background-color: var(--background-red);
+    color: var(--button-hover-text-color);
+}
+
+/* main extension container, use grid for better control over the layout */
+.extension-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+/* extension-card */
+
+.extension-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.2em;
+    background-color: lightcoral;
+    padding: 0.7em;
+    border-radius: 1em;
+    box-shadow: 0 0 4px rgb(208, 208, 208);
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+    backdrop-filter: blur(10px);            /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(10px);    /* For Safari */
+}
+
+.extension-header{
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+/* :is() pseudo class use! modern way */
+.extension-heading :is(h3, p){
+    margin: 0;
+}
+
+.extension-heading p{
+    color: var(--neutral-600);
+}
+
+.extension-footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* remove buttons css */
+.remove-button{
+    border: none;
+    border-radius: 1.5em;
+    box-shadow: 0 0 1.5px var(--neutral-600);
+    padding: 0.5em 1em;
+    background-color: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.remove-button:hover{
+    background-color: var(--background-red);
+    color: var(--button-hover-text-color);
+}
+
+
+/* responsiveness max-width: 1100px */
+@media (min-width:725px) and (max-width: 1100px){
+    .extension-container{
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+/* responsiveness max-width: 725px */
+@media (max-width:725px){
+    .extension-container{
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    /* header with filter buttons */
+    .header-container{
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    body{
+        padding: 1rem 1rem;
+    }
+}
+
+
+/* Toggle Switch Container */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+  }
+  
+/* Hide Default Checkbox */
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Slider (Switch UI) */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+/* Round Knob */
+.slider::before {
+    content: "";
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    bottom: 2px;
+    background: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+/* Toggle ON State */
+input:checked + .slider {
+    background: var(--background-red);
+}
+
+input:checked + .slider::before {
+    transform: translateX(18px);
+}
